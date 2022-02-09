@@ -23,6 +23,7 @@ body {
   --blackColor: #111111;
   --greyColor: #666666;
   --whiteColor: #f5f5f5;
+  --borderColor: rgba(0, 183, 180, 0.137);
 }
 
 .blueColor {
@@ -32,6 +33,7 @@ body {
   --blackColor: #111111;
   --greyColor: #666666;
   --whiteColor: #f5f5f5;
+  --borderColor: rgba(12, 0, 183, 0.137);
 }
 
 h1 {
@@ -79,7 +81,8 @@ img {
 .bannerCard,
 .col,
 .giftIconDiv,
-.imgBtns, .moveUp {
+.imgBtns,
+.moveUp {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,14 +100,12 @@ img {
   width: -moz-max-content;
   width: max-content;
   padding: 1rem 1.5rem;
-  border-radius: 2px;
   color: var(--whiteColor);
   font-size: 15px;
   cursor: pointer;
 }
 
 .cta:hover {
-  color: violet;
   font-weight: 500;
   background: var(--blackColor);
 }
@@ -132,11 +133,11 @@ img {
   width: 40px;
   border-radius: 2px;
   background: var(--primaryColor);
-  opacity: .2;
+  opacity: 0.2;
   z-index: 2000;
   cursor: pointer;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   display: none;
 }
 
@@ -184,8 +185,30 @@ img {
 
 .header .languageDiv {
   display: none;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  margin-right: 3rem;
+}
+
+.header .languageDiv .phoneNo,
+.header .languageDiv .icon {
+  color: var(--whiteColor);
+}
+
+.header .languageDiv .phoneNo .icon,
+.header .languageDiv .phoneNo span,
+.header .languageDiv .icon .icon,
+.header .languageDiv .icon span {
+  margin-right: 10px;
+}
+
+.header .languageDiv .phoneNo span,
+.header .languageDiv .icon span {
+  font-size: 1rem;
+  font-weight: 500;
+  padding-right: 13px;
+  border-right: 2px solid var(--whiteColor);
 }
 
 .header .languageDiv .badgeDiv .badgeImg {
@@ -196,15 +219,18 @@ img {
 }
 
 .rightColContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  text-align: right;
 }
 
 @media screen and (max-width: 767px) {
@@ -286,8 +312,8 @@ img {
 
 .navLists .navItem .navLink {
   color: var(--whiteColor);
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .toggleIconDiv .icon {
@@ -311,6 +337,12 @@ img {
 .home .slideText {
   display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: absolute;
   gap: 2rem;
   top: 50%;
@@ -362,31 +394,64 @@ img {
 }
 
 .home .bannerCard {
+  margin-top: 4rem;
   display: none;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   background: var(--whiteColor);
   color: var(--greyColor);
+  width: 600px !important;
+  height: 100px !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 10px solid var(--borderColor);
+}
+
+.home .bannerCard .cardInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 2rem 1rem;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
 }
 
 .home .bannerCard .col {
+  font-weight: 500;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 0 5px;
   gap: 5px;
 }
 
 .home .bannerCard .col .date {
-  font-size: 20px;
-  font-size: bold;
+  font-size: 18px;
+  font-size: 700;
 }
 
-.home .bannerCard .btn {
+.home .bannerCard .cardBtn {
+  height: 100% !important;
   background: var(--primaryColor);
+  cursor: pointer;
+}
+
+.home .bannerCard .cardBtn:hover {
+  font-weight: 500;
+  background: var(--HoverColor);
+}
+
+.home .bannerCard .cardBtn .btn {
   color: var(--whiteColor);
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
 }
 
 .home .homeWrapper {
@@ -406,7 +471,21 @@ img {
   margin: 10px 1.5rem;
 }
 
+.about .aboutContainer .aboutImage {
+  border: 10px solid var(--borderColor);
+  height: 100%;
+  width: auto;
+}
+
+.about .aboutContainer .aboutImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .offer {
+  padding: 6rem 0;
   background: var(--sectionBg);
 }
 
@@ -487,20 +566,23 @@ img {
 }
 
 .accomodation .imgDiv,
-.facilities .imgDiv, .gallery .imgDiv {
+.facilities .imgDiv,
+.gallery .imgDiv {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
 
 .accomodation .imgDiv:hover img,
-.facilities .imgDiv:hover img, .gallery .imgDiv:hover img {
+.facilities .imgDiv:hover img,
+.gallery .imgDiv:hover img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
 .accomodation .imgDiv img,
-.facilities .imgDiv img, .gallery .imgDiv img {
+.facilities .imgDiv img,
+.gallery .imgDiv img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -510,7 +592,8 @@ img {
 }
 
 .accomodation .imgDiv .imgInfo,
-.facilities .imgDiv .imgInfo, .gallery .imgDiv .imgInfo {
+.facilities .imgDiv .imgInfo,
+.gallery .imgDiv .imgInfo {
   position: absolute;
   bottom: 0;
   display: -webkit-box;
@@ -526,19 +609,31 @@ img {
 }
 
 .accomodation .imgDiv .imgInfo .name,
-.facilities .imgDiv .imgInfo .name, .gallery .imgDiv .imgInfo .name {
+.facilities .imgDiv .imgInfo .name,
+.gallery .imgDiv .imgInfo .name {
   color: var(--whiteColor);
   padding-left: 1rem;
 }
 
 .accomodation .imgDiv .imgInfo .imgBtns .whiteBtn,
-.facilities .imgDiv .imgInfo .imgBtns .whiteBtn, .gallery .imgDiv .imgInfo .imgBtns .whiteBtn {
+.facilities .imgDiv .imgInfo .imgBtns .whiteBtn,
+.gallery .imgDiv .imgInfo .imgBtns .whiteBtn {
   background: var(--whiteColor);
 }
 
 .accomodation .imgDiv .imgInfo .imgBtns .whiteBtn a,
-.facilities .imgDiv .imgInfo .imgBtns .whiteBtn a, .gallery .imgDiv .imgInfo .imgBtns .whiteBtn a {
+.facilities .imgDiv .imgInfo .imgBtns .whiteBtn a,
+.gallery .imgDiv .imgInfo .imgBtns .whiteBtn a {
   color: var(--primaryColor);
+}
+
+.desc {
+  display: block;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.5rem;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .facilities .facWrapper {
@@ -554,55 +649,23 @@ img {
   position: relative;
 }
 
-.location .mapDiv {
-  position: relative;
-  height: 400px;
-  width: 100%;
+.location .locationInfo .textHeader {
+  text-align: left;
+}
+
+.location .locationInfo .paragraph {
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--primaryColor);
+}
+
+.location .locationInfo .aboutBtn {
+  margin: 10px 1.5rem;
 }
 
 .location iframe {
+  border: 10px solid var(--borderColor);
   height: 100%;
   width: 100%;
-}
-
-.locationInfo {
-  position: absolute;
-  top: 25%;
-  left: 3%;
-  padding: 2rem;
-  background: white;
-  border-radius: 1 px;
-  max-width: -webkit-max-content;
-  max-width: -moz-max-content;
-  max-width: max-content;
-  z-index: 10;
-}
-
-.locationInfo .name {
-  font-size: 18px;
-  display: block;
-  padding: 10px 0;
-  font-weight: 500;
-}
-
-.locationInfo .review .stars .bx {
-  font-size: 1rem;
-  color: var(--primaryColor);
-}
-
-.locationInfo .loc,
-.locationInfo .hours,
-.locationInfo .contact {
-  display: block;
-  margin: 10px 0;
-}
-
-.locationInfo .loc .icon,
-.locationInfo .hours .icon,
-.locationInfo .contact .icon {
-  color: var(--primaryColor);
-  font-size: 20px;
-  margin-right: 10px;
 }
 
 .footerSection {
@@ -621,35 +684,41 @@ img {
           justify-content: center;
   display: -ms-grid;
   display: grid;
+  margin: auto;
   gap: 2rem;
 }
 
 .footerSection .contentContainer .sisterCompany {
+  display: -ms-grid;
+  display: grid;
+}
+
+.footerSection .contentContainer .sisterCompany .logoDivs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 1rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
-.footerSection .contentContainer .sisterCompany .logoDiv {
-  height: 100px;
-  width: 100px;
+.footerSection .contentContainer .sisterCompany .logoDivs .logoDiv {
+  height: 80px;
+  width: 80px;
   border: 2px solid transparent;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   overflow: hidden;
 }
 
-.footerSection .contentContainer .sisterCompany .logoDiv:hover {
+.footerSection .contentContainer .sisterCompany .logoDivs .logoDiv:hover {
   border: 2px solid #15a7aa;
 }
 
-.footerSection .contentContainer .sisterCompany .logoDiv img {
+.footerSection .contentContainer .sisterCompany .logoDivs .logoDiv img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
@@ -692,14 +761,15 @@ img {
   margin-top: 1rem;
 }
 
-.footerSection .contentContainer .linksDiv ul span {
+.footerSection .contentContainer .linksDiv ul span, .footerSection .contentContainer .linksDiv ul a {
+  color: var(--blackColor);
   margin: 5px 0;
   cursor: pointer;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
-.footerSection .contentContainer .linksDiv ul span:hover {
+.footerSection .contentContainer .linksDiv ul span:hover, .footerSection .contentContainer .linksDiv ul a:hover {
   -webkit-transform: translateX(5px);
           transform: translateX(5px);
   color: #0d5e5f;
@@ -761,5 +831,198 @@ img {
 ::selection {
   background: var(--primaryColor);
   color: var(--whiteColor);
+}
+
+@media screen and (min-width: 480px) {
+  .footerLinks {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .navBar {
+    width: 40%;
+  }
+  .home .slideText .subTitle {
+    font-size: 1.5rem;
+    max-width: 400px;
+  }
+  .accomodation .imgDiv,
+  .facilities .imgDiv,
+  .gallery .imgDiv {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  html {
+    font-size: 100%;
+  }
+  .home .bannerCard {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+  .facilities .swiper-slide,
+  .offerItem {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header .languageDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: right;
+        -ms-flex-pack: right;
+            justify-content: right;
+  }
+  .header {
+    padding: 2rem 2.5rem;
+  }
+  .home .slide .slideText {
+    margin-top: 2rem;
+  }
+  .toggleIconDiv,
+  .closeIconDiv,
+  .tagLine {
+    display: none;
+  }
+  .rightColContainer {
+    -ms-flex-preferred-size: 80%;
+        flex-basis: 80%;
+  }
+  .navBar {
+    width: 100%;
+  }
+  .navLists {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    text-align: center;
+    margin: 0;
+  }
+  .navLists .navItem {
+    position: relative;
+    padding: 10px 5px;
+  }
+  .navLists .navItem:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    background: var(--whiteColor);
+    bottom: 0;
+    left: 0;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .navLists .navItem:hover {
+    background: transparent;
+  }
+  .navLists .navItem:hover::after {
+    width: 100%;
+  }
+  .navLists .navItem .navLink span {
+    display: none;
+  }
+  .colorSwitch {
+    position: absolute;
+    top: 2.2rem;
+    right: 3rem;
+  }
+  .colorSwitch .icon {
+    color: var(--whiteColor);
+  }
+  .grid {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery .swiper-slide {
+    padding-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .colorSwitch {
+    right: 9rem !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 2rem 16rem;
+  }
+  .colorSwitch {
+    right: 17rem !important;
+  }
+  .navLists .navItem {
+    padding: 10px !important;
+  }
+  .container {
+    width: 65%;
+    margin: auto;
+  }
+  .section {
+    padding: 9rem 0 4rem;
+  }
+  .accWrapper .swiper-slide {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .accWrapper .swiper-slide .imgDiv {
+    height: 400px;
+  }
+  .contentWrapper {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  .sisterCompany .logoDiv {
+    height: 80px;
+    width: 80px;
+  }
+  .footerSection .contentContainer {
+    width: 70%;
+    padding: 3rem 0;
+  }
+  .accomodation {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+  .offer {
+    margin-top: 4rem;
+  }
+  .textHeader h1 {
+    font-size: 2rem;
+  }
+  .textHeader .subTitle {
+    font-size: 1.5rem;
+  }
+  .home .bannerBtn {
+    padding: .8rem 1.5rem;
+  }
+  .home .bannerBtn .aboutBtn {
+    font-size: 20px;
+    color: var(--whiteColor);
+  }
 }
 /*# sourceMappingURL=index.css.map */

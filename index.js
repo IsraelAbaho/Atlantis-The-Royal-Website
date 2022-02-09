@@ -66,6 +66,7 @@ let accSwiper = new Swiper(".accWrapper", {
     el: ".swiper-pagination",
     clickable: true,
   },
+  
   mousewheel: true,
   keyboard: true,
   mausehold: true,
@@ -131,6 +132,17 @@ let gallerySwiper = new Swiper(".gallerySwiper", {
       el: ".swiper-pagination",
       clickable: true,
     },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
     mousewheel: true,
     keyboard: true,
     mausehold: true,
@@ -138,5 +150,34 @@ let gallerySwiper = new Swiper(".gallerySwiper", {
    
   });
 
+
+
+  // Scroll Reveal ======================================================>
+  const sr = ScrollReveal({ 
+    distance: '30px',
+    duration: 2000,
+    origin: 'top',
+    reset: true
+    });
+
+    sr.reveal(`.about, .accomodation, .location, .offer, .facilities,  .gallery, .footerSection, .linksDiv `,
+    {interval: 200,
+       
+   })
+  
+    sr.reveal(`.locationInfo`,
+    {interval: 200,
+       origin: 'left'
+   })
+
+
+    sr.reveal(`iframe`,
+    {interval: 200,
+       origin: 'right'
+   })
+
+ 
+
+   
 
 

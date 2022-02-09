@@ -22,6 +22,7 @@ body {
   --blackColor: #111111;
   --greyColor: #666666;
   --whiteColor: #f5f5f5;
+  --borderColor: rgba(0, 183, 180, 0.137);
   // 031642
 }
 .blueColor {
@@ -31,13 +32,13 @@ body {
   --blackColor: #111111;
   --greyColor: #666666;
   --whiteColor: #f5f5f5;
+  --borderColor: rgba(12, 0, 183, 0.137);
   // 031642
 }
 
 // Resuable CSS  ==============================>
 
 h1 {
- 
   font-family: "Montserrat", sans-serif;
 }
 
@@ -80,7 +81,8 @@ img {
 .bannerCard,
 .col,
 .giftIconDiv,
-.imgBtns, .moveUp {
+.imgBtns,
+.moveUp {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,12 +92,10 @@ img {
   background: var(--primaryColor);
   width: max-content;
   padding: 1rem 1.5rem;
-  border-radius: 2px;
   color: var(--whiteColor);
   font-size: 15px;
   cursor: pointer;
   &:hover {
-    color: violet;
     font-weight: 500;
     background: var(--blackColor);
   }
@@ -114,30 +114,27 @@ img {
   }
 }
 
-
-  .moveUp{
-    position: fixed;
-    top: 90%;
-    right: 1rem;
-    height: 40px;
-    width: 40px;
-    border-radius: 2px;
-    background: var(--primaryColor);
-    opacity: .2;
-    z-index: 2000;
-    cursor: pointer;
-    transition: .3s ease;
-    display: none;
-    &:hover{
-      background: var(--HoverColor);
-      opacity: 1;
-    }
-    .icon{
-      color: var(--whiteColor);
-    }
+.moveUp {
+  position: fixed;
+  top: 90%;
+  right: 1rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 2px;
+  background: var(--primaryColor);
+  opacity: 0.2;
+  z-index: 2000;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: none;
+  &:hover {
+    background: var(--HoverColor);
+    opacity: 1;
   }
-
-
+  .icon {
+    color: var(--whiteColor);
+  }
+}
 
 // Header Section SCSS =========================================================>
 
@@ -164,7 +161,23 @@ img {
 
   .languageDiv {
     display: none;
-    flex-wrap: wrap;
+    justify-content: right;
+    margin-right: 3rem;
+    .phoneNo,
+    .icon {
+      color: var(--whiteColor);
+      .icon,
+      span {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: 500;
+        padding-right: 13px;
+        border-right: 2px solid var(--whiteColor);
+      }
+    }
     .badgeDiv {
       .badgeImg {
         margin: 0 4px;
@@ -176,9 +189,11 @@ img {
   }
 }
 .rightColContainer {
-  display: flex;
+  flex: 1;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
+  text-align: right;
 }
 
 // NavBar ============>
@@ -251,8 +266,8 @@ img {
 
     .navLink {
       color: var(--whiteColor);
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-size: 1rem;
+      font-weight: 700;
     }
   }
 }
@@ -279,6 +294,8 @@ img {
 
   .slideText {
     display: grid;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     gap: 2rem;
     top: 50%;
@@ -324,24 +341,45 @@ img {
   }
 
   .bannerCard {
+    margin-top: 4rem;
     display: none;
     justify-content: space-between;
     background: var(--whiteColor);
     color: var(--greyColor);
-    // padding: 1rem;
+    width: 600px !important;
+    height: 100px !important;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 10px solid var(--borderColor);
+    .cardInfo {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 2rem 1rem;
+      flex-basis: 80%;
+    }
     .col {
+      font-weight: 500;
       flex-direction: column;
-      // padding: 0 5px;
+      padding: 0 5px;
       gap: 5px;
       .date {
-        font-size: 20px;
-        font-size: bold;
+        font-size:18px;
+        font-size: 700;
       }
     }
-    .btn {
+    .cardBtn {
+      height: 100% !important;
       background: var(--primaryColor);
-      color: var(--whiteColor);
-      padding: 1rem 1.5rem;
+      cursor: pointer;
+      &:hover {
+        font-weight: 500;
+        background: var(--HoverColor);
+      }
+      .btn {
+        color: var(--whiteColor);
+        padding: 1rem 2rem;
+      }
     }
   }
   .homeWrapper {
@@ -366,11 +404,22 @@ img {
         margin: 10px 1.5rem;
       }
     }
+    .aboutImage {
+      border: 10px solid var(--borderColor);
+      height: 100%;
+      width: auto;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
 
 // Offer Section Scss ===========================================================>
 .offer {
+  padding: 6rem 0;
   background: var(--sectionBg);
   .sectionContainer {
     .offerItem {
@@ -439,7 +488,8 @@ img {
 
 // Accomodation, Facilities and  Gallery Section scss ===============>
 .accomodation,
-.facilities, .gallery {
+.facilities,
+.gallery {
   .imgDiv {
     position: relative;
     height: 200px;
@@ -474,6 +524,14 @@ img {
     }
   }
 }
+.desc {
+  display: block;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.5rem;
+  padding: 1rem 1.5rem 2rem;
+}
 
 .facilities {
   .facWrapper {
@@ -486,58 +544,36 @@ img {
   }
 }
 
-.gallerySwiper{
+.gallerySwiper {
   position: relative;
 }
 
 // Location Section Scss ===========================================================>
 .location {
-  .mapDiv {
-    position: relative;
-    height: 400px;
-    width: 100%;
+
+  .locationInfo {
+    .textHeader {
+      text-align: left;
+    }
+
+    .paragraph {
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--primaryColor);
+    }
+
+    .aboutBtn {
+      margin: 10px 1.5rem;
+    }
   }
+  
   iframe {
+    border: 10px solid var(--borderColor);
     height: 100%;
     width: 100%;
   }
 }
 
-.locationInfo {
-  position: absolute;
-  top: 25%;
-  left: 3%;
-  padding: 2rem;
-  background: white;
-  border-radius: 1 px;
-  max-width: max-content;
-  z-index: 10;
 
-  .name {
-    font-size: 18px;
-    display: block;
-    padding: 10px 0;
-    font-weight: 500;
-  }
-
-  .review .stars .bx{
-    font-size: 1rem;
-    color: var(--primaryColor);
-   
-  }
-
-  .loc,
-  .hours,
-  .contact {
-    display: block;
-    margin: 10px 0;
-    .icon{
-      color: var(--primaryColor);
-      font-size: 20px;
-      margin-right: 10px;
-    }
-  }
-}
 
 
 // Footer Section Scss ============>
@@ -551,32 +587,36 @@ img {
     align-items: center;
     justify-content: center;
     display: grid;
+    margin: auto;
     gap: 2rem;
-    
 
-   .sisterCompany{
-     display: flex;
-     align-items: center;
-     flex-wrap: wrap;
-     gap: 1rem;
-     .logoDiv{
-       height: 100px;
-       width: 100px;
-       border: 2px solid transparent;
-       transition: .3s ease;
-       overflow: hidden;
-       &:hover{
-        border: 2px solid  rgb(21, 167, 170);;
+    .sisterCompany {
+      display: grid;
 
-       }
-     
-       img{
-         object-fit: cover;
-         height: 100%;
-         width: 100%;
-       }
-     }
-   }
+      .logoDivs {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        .logoDiv {
+          height: 80px;
+          width: 80px;
+          border: 2px solid transparent;
+          transition: 0.3s ease;
+          overflow: hidden;
+          &:hover {
+            border: 2px solid rgb(21, 167, 170);
+          }
+  
+          img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      
+    }
     .footersectionTitle {
       color: var(--primaryColor);
       font-weight: 600;
@@ -605,7 +645,8 @@ img {
         font-size: 15px;
         margin-top: 1rem;
 
-        span {
+        span, a {
+          color: var(--blackColor);
           margin: 5px 0;
           cursor: pointer;
           transition: 0.3s ease;
@@ -664,7 +705,210 @@ img {
   }
 }
 
-::selection{
+::selection {
   background: var(--primaryColor);
   color: var(--whiteColor);
+}
+
+//MEDIA QUERY SCSS ======================================================================>
+@media screen and (min-width: 480px) {
+  .footerLinks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 560px) {
+  .navBar {
+    width: 40%;
+  }
+
+  .home {
+    .slideText {
+      .subTitle {
+        font-size: 1.5rem;
+        max-width: 400px;
+      }
+    }
+  }
+  .accomodation,
+  .facilities,
+  .gallery {
+    .imgDiv {
+      height: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 680px) {
+  html {
+    font-size: 100%;
+  }
+
+  .home .bannerCard {
+    display: flex;
+    width: 100%;
+  }
+
+  .facilities .swiper-slide,
+  .offerItem {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header .languageDiv {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+
+  .header {
+    padding: 2rem 2.5rem;
+  }
+
+  .home .slide .slideText {
+    margin-top: 2rem;
+  }
+
+  .toggleIconDiv,
+  .closeIconDiv,
+  .tagLine {
+    display: none;
+  }
+
+  .rightColContainer {
+    flex-basis: 80%;
+  }
+
+  .navBar {
+    width: 100%;
+  }
+  .navLists {
+    flex-direction: row;
+    text-align: center;
+    margin: 0;
+
+    .navItem {
+      position: relative;
+      padding: 10px 5px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0;
+        background: var(--whiteColor);
+        bottom: 0;
+        left: 0;
+        transition: 0.3s ease;
+      }
+      &:hover {
+        background: transparent;
+        &::after {
+          width: 100%;
+        }
+      }
+
+      .navLink span {
+        display: none;
+      }
+    }
+  }
+
+  .colorSwitch {
+    position: absolute;
+    top: 2.2rem;
+    right: 3rem;
+    .icon {
+      color: var(--whiteColor);
+    }
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery .swiper-slide {
+    padding-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .colorSwitch {
+    right: 9rem !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 2rem 16rem;
+  }
+  .colorSwitch {
+    right: 17rem !important;
+  }
+
+  .navLists {
+    .navItem {
+      padding: 10px !important;
+    }
+  }
+  .container {
+    width: 65%;
+    margin: auto;
+  }
+
+  .section {
+    padding: 9rem 0 4rem;
+  }
+  .accWrapper .swiper-slide {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .imgDiv {
+      height: 400px;
+    }
+  }
+  .contentWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .sisterCompany {
+    .logoDiv {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  .footerSection .contentContainer {
+    width: 70%;
+    padding: 3rem 0;
+  }
+
+  .accomodation {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .offer {
+    margin-top: 4rem;
+  }
+
+  .textHeader{
+    h1 {
+      font-size: 2rem;
+    }
+    .subTitle {
+      font-size: 1.5rem;
+
+    }
+  }
+  .home {
+    .bannerBtn {
+      padding: .8rem 1.5rem;
+      .aboutBtn {
+        font-size: 20px;
+        color: var(--whiteColor);
+      }
+    }
+  }
 }
